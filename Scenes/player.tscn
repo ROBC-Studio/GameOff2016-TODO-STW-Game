@@ -24,7 +24,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
+points = Vector2Array( -14, 16, -4, 6, 6, 16, -4, 26, -14, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -58,34 +58,36 @@ tracks/0/keys = { "times":FloatArray( 0, 2 ), "transitions":FloatArray( 1, 1 ), 
 transform/pos = Vector2( 510.098, 263.695 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 24, 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
+__meta__ = { "_edit_lock_":true }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="MoveCollision" type="CollisionPolygon2D" parent="."]
 
-transform/pos = Vector2( -4.92982, 2.0366 )
-transform/scale = Vector2( 1.21952, 1.19268 )
-shape = SubResource( 1 )
+build_mode = 0
+polygon = Vector2Array( -14, 16, -4, 6, 6, 16, -4, 26, -14, 16 )
+shape_range = Vector2( 0, 0 )
 trigger = false
-_update_shape_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+editor/display_folded = true
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 1, 1 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -98,6 +100,7 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+__meta__ = { "_edit_lock_":true }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
