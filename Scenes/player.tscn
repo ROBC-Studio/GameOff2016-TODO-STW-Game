@@ -21,15 +21,10 @@
 [ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=19]
 [ext_resource path="res://Scenes/Terminal.tscn" type="PackedScene" id=20]
 
-<<<<<<< HEAD
 [sub_resource type="ConvexPolygonShape2D" id=1]
-=======
-[sub_resource type="CapsuleShape2D" id=1]
->>>>>>> c3ab1324855b376dbe5ef9345831a6d58e3897bd
 
 custom_solver_bias = 0.0
-radius = 10.0
-height = 20.0
+points = Vector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -63,11 +58,7 @@ tracks/0/keys = { "times":FloatArray( 0, 2 ), "transitions":FloatArray( 1, 1 ), 
 transform/pos = Vector2( 510.098, 263.695 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-<<<<<<< HEAD
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 24, 4 )
-=======
-shapes/0/transform = Matrix32( 1.21952, 0, 0, 1.19268, -4.92982, 2.0366 )
->>>>>>> c3ab1324855b376dbe5ef9345831a6d58e3897bd
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -78,7 +69,7 @@ script/script = ExtResource( 1 )
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
