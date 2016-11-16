@@ -10,7 +10,7 @@ const terminal_format = ">> %s";
 func _ready():
 	set_opacity(0);
 	originalColor = get_node("Response").get_color("font_color");
-	
+
 func _input_event(event):
 	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed):
 		set_error("test error");
@@ -23,7 +23,6 @@ func initialize():
 	if (!isInitialized):
 		set_opacity(1);
 		set_text('');
-		grab_focus();
 		response_node.set_text('');
 		isInitialized = true;
 
