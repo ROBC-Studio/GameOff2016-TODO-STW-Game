@@ -26,6 +26,9 @@ func _input(event):
 			get_node("Camera2D/CanvasLayer/Terminal").initialize();
 		else:
 			get_node("Camera2D/CanvasLayer/Terminal").close();
+	elif (event.type == InputEvent.KEY):
+		if (!get_node("Camera2D/CanvasLayer/Terminal").has_focus()):
+			get_node("Camera2D/CanvasLayer/Terminal").grab_focus();
 
 func _process(delta):
 	var sprite = get_node("AnimatedSprite");
@@ -51,7 +54,7 @@ func _process(delta):
 		sprite.play("hack");
 	else:
 		sprite.play("idle");
-		zoomIn();
+		#zoomIn();
 
 func _fixed_process(delta):
 	var motion = Vector2();

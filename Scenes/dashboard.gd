@@ -1,14 +1,16 @@
 extends LineEdit
 
-var tapped = false;
-var isInitialized = false;
-var originalColor = Color(0.0, 0.0, 0.0);
 onready var response_node = get_node("Response");
+
 const terminal_prefix = ">> ";
 const terminal_format = ">> %s";
 
+var tapped = false;
+var isInitialized = false;
+var originalColor = Color(0.0, 0.0, 0.0);
+
 func _ready():
-	set_opacity(0);
+	hide();
 	originalColor = get_node("Response").get_color("font_color");
 
 func _input_event(event):
@@ -21,13 +23,14 @@ func _input_event(event):
 
 func initialize(): 
 	if (!isInitialized):
-		set_opacity(1);
+		show();
 		set_text('');
 		response_node.set_text('');
 		isInitialized = true;
 
 func close():
-	set_opacity(0);
+	release_focus();
+	hide();
 	isInitialized = false;
 
 func set_error(errorMessage): 
