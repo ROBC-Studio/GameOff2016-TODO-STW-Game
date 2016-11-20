@@ -8,5 +8,3 @@ extends Node
 func _ready():
 	var sprite = get_node("AnimatedSprite");
 	sprite.get_sprite_frames().set_animation_speed("default", 8.0);
-
-

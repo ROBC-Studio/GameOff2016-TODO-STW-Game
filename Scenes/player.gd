@@ -9,6 +9,8 @@ var isDashing = false;
 var isHacking = false;
 var isZoomedOut = false;
 
+onready var Store = get_node("/root/Store");
+
 func _ready():
 	# Set up animation
 	var sprite = get_node("AnimatedSprite");
@@ -23,6 +25,10 @@ func _input(event):
 	if (event.is_action_pressed("ui_terminal")):
 		isHacking = !isHacking;
 		if (isHacking):
+			Store.dispatch({
+				type = "AFFECT_PLAYER",
+				id = 0
+			});
 			get_node("Camera2D/CanvasLayer/Terminal").initialize();
 		else:
 			get_node("Camera2D/CanvasLayer/Terminal").close();
@@ -50,7 +56,7 @@ func _process(delta):
 		
 	if (isRunning):
 		sprite.play("run");
-	elif (isHacking):
+	elif (isHacking):	
 		sprite.play("hack");
 	else:
 		sprite.play("idle");

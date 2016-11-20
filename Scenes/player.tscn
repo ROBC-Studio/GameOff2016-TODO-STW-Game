@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=26 format=1]
 
 [ext_resource path="res://Scenes/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_0.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Assets/ode_player/ode_player_Run_4.png" type="Texture" id=18]
 [ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=19]
 [ext_resource path="res://Scenes/Terminal.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -70,6 +71,7 @@ __meta__ = { "_edit_lock_":true }
 
 frames = SubResource( 2 )
 animation = "idle"
+frame = 5
 playing = true
 __meta__ = { "_edit_lock_":true }
 
@@ -126,5 +128,7 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Entity" parent="." instance=ExtResource( 21 )]
 
 
