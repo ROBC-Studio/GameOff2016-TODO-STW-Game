@@ -41,13 +41,16 @@ func handlePlayer(state, action):
 		for entity in state:
 			if (entity.id == action.id):
 				entity["affected"] = true;
+				break;
 	return;
 
 func add_entity_to_store(entity, storeName):
 	_state[storeName].append(entity);
+	return;
 
 func update():
-		get_tree().call_group(0, "store_listener", "onUpdate", _state);
+	get_tree().call_group(0, "store_listener", "onUpdate", _state);
+	return;
 		
 func save_state():
 	pass

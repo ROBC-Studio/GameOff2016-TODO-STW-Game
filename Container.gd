@@ -28,13 +28,15 @@ func onUpdate(newState):
 		# clean up dead children... morbid I know
 		if (child.find_node("Entity").isDead()):
 			_state.erase(child.getState());
+	return;
 
 # returns an integer which is the new id for the regeristing object
-func register():
+func register(pathToNode):
 	var id = _currentId;
 	_currentId = _currentId + 1;
 	get_node("/root/Store").add_entity_to_store({
+		id = id,
 		isDead = false,
-		id = id
+		path = pathToNode
 	}, get_name());
 	return id;

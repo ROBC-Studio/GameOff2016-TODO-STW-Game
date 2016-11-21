@@ -16,19 +16,15 @@ func _ready():
 	var sprite = get_node("AnimatedSprite");
 	sprite.get_sprite_frames().set_animation_speed("run", 10.0);
 	sprite.get_sprite_frames().set_animation_speed("hack", 10.0);
-	
 	get_node("MoveCollision").set("trigger", false);
 	set_process(true);
 	set_process_input(true);
 	set_fixed_process(true);
+	
 func _input(event):
 	if (event.is_action_pressed("ui_terminal")):
 		isHacking = !isHacking;
 		if (isHacking):
-			Store.dispatch({
-				type = "AFFECT_PLAYER",
-				id = 0
-			});
 			get_node("Camera2D/CanvasLayer/Terminal").initialize();
 		else:
 			get_node("Camera2D/CanvasLayer/Terminal").close();
