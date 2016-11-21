@@ -21,9 +21,9 @@ func _input_event(event):
 		response_node.add_color_override("font_color", originalColor);
 		var command = get_text();
 		
-		if (command.begins_with("add_enemy")):
+		if (command.begins_with("ls")):
 			Store.dispatch({
-				type = "ADD_ENEMY"
+				type = "LIST_ENEMIES"
 			});
 		# Send the action to the event
 

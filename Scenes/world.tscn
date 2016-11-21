@@ -17,11 +17,39 @@ script/script = ExtResource( 2 )
 
 [node name="RigidBody" parent="Enemies" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 233.638, 182.389 )
+transform/pos = Vector2( 322.572, -27.1325 )
+
+[node name="RigidBody3" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 320.906, 117.422 )
+
+[node name="RigidBody4" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 322.134, 269.662 )
 
 [node name="RigidBody1" parent="Enemies" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 330.63, 171.339 )
+transform/pos = Vector2( 323.034, -76.8041 )
+
+[node name="RigidBody3 2" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 321.369, 67.75 )
+
+[node name="RigidBody33" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 322.596, 219.99 )
+
+[node name="RigidBody2" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 322.126, -126.346 )
+
+[node name="RigidBody3 3" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 320.46, 18.2079 )
+
+[node name="RigidBody34" parent="Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 321.688, 170.448 )
 
 [node name="Players" type="Node" parent="."]
 

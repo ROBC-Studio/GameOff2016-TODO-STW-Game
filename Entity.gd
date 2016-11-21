@@ -1,7 +1,7 @@
 
 extends Node
 
-onready var _id = get_parent().get_parent().register(get_path());
+onready var _id = get_parent().get_parent().register(get_parent().get_path());
 
 # expects props: id and isDead
 var _state = {};

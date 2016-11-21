@@ -71,7 +71,7 @@ __meta__ = { "_edit_lock_":true }
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 5
+frame = 2
 playing = true
 __meta__ = { "_edit_lock_":true }
 
@@ -84,7 +84,6 @@ trigger = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-editor/display_folded = true
 anchor_mode = 1
 rotating = false
 current = true

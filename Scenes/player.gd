@@ -29,7 +29,7 @@ func _input(event):
 		else:
 			get_node("Camera2D/CanvasLayer/Terminal").close();
 	elif (event.type == InputEvent.KEY):
-		if (!get_node("Camera2D/CanvasLayer/Terminal").has_focus()):
+		if (isHacking and !get_node("Camera2D/CanvasLayer/Terminal").has_focus()):
 			get_node("Camera2D/CanvasLayer/Terminal").grab_focus();
 
 func _process(delta):
@@ -77,8 +77,6 @@ func _fixed_process(delta):
 	motion = motion.normalized()*MOTION_SPEED*delta;
 	if (isDashing):
 		motion = motion*DASH_SPEED;
-		if (isDashing):
-			zoomOut();
 		isDashing = false;
 	motion = move(motion);
 
@@ -94,4 +92,3 @@ func zoomIn():
 	# TODO:
 		# Set limits to dash
 		# Add dash "after - image"
-		# Camera zoom out on dash, zoom back in on dash
