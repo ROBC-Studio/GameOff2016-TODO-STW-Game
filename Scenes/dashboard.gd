@@ -1,8 +1,11 @@
 extends LineEdit
 
 onready var response_node = get_node("Response");
-
 onready var Store = get_node("/root/Store");
+
+const EnemyActions = preload("res://EnemiesActions.gd");
+const PlayersActions = preload("res://PlayersActions.gd");
+
 const terminal_prefix = ">> ";
 const terminal_format = ">> %s";
 
@@ -22,9 +25,11 @@ func _input_event(event):
 		var command = get_text();
 		
 		if (command.begins_with("ls")):
-			Store.dispatch({
-				type = "LIST_ENEMIES"
-			});
+			Store.dispatch(EnemyActions.list_enemies());
+			return;
+		if (command.begins_with("affect_me")):
+			Store.dispatch(PlayersActions.affect_player(0));
+			return;
 		# Send the action to the event
 
 func initialize(): 

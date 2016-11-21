@@ -10,6 +10,7 @@ var isHacking = false;
 var isZoomedOut = false;
 
 onready var Store = get_node("/root/Store");
+onready var MyTimer = get_node("/root/MyTimer");
 
 func _ready():
 	# Set up animation
@@ -56,7 +57,6 @@ func _process(delta):
 		sprite.play("hack");
 	else:
 		sprite.play("idle");
-		#zoomIn();
 
 func _fixed_process(delta):
 	var motion = Vector2();
@@ -79,6 +79,13 @@ func _fixed_process(delta):
 		motion = motion*DASH_SPEED;
 		isDashing = false;
 	motion = move(motion);
+
+func affect_player():
+	var label = get_node("Label");
+	label.set_text("I'M AFFECTED");
+	MyTimer._wait(4);
+	yield(MyTimer, "timer_end");
+	label.set_text("");
 
 func zoomOut():
 	if (!isZoomedOut):

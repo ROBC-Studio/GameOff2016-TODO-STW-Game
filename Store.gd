@@ -5,11 +5,8 @@ extends Node
 
 # Enemy actions:
 const LIST_ENEMIES = "LIST_ENEMIES";
-const REMOVE_ENEMY = "REMOVE_ENEMY";
-const UPDATE_ENEMY = "UPDATE_ENEMY";
 
 # Player actions:
-const ADD_PLAYER = "ADD_PLAYER";
 const AFFECT_PLAYER = "AFFECT_PLAYER";
 
 var _state = {
@@ -30,7 +27,7 @@ func handlePlayer(state, action):
 	if (action.type == AFFECT_PLAYER):
 		for entity in state:
 			if (entity.id == action.id):
-				entity["affected"] = true;
+				get_node(entity.path).affect_player();
 				break;
 	return;
 
