@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=27 format=1]
 
 [ext_resource path="res://Scenes/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_0.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Assets/ode_player/ode_player_Run_4.png" type="Texture" id=18]
 [ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=19]
 [ext_resource path="res://Scenes/Terminal.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/610.fnt" type="BitmapFont" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -70,6 +72,7 @@ __meta__ = { "_edit_lock_":true }
 
 frames = SubResource( 2 )
 animation = "idle"
+frame = 2
 playing = true
 __meta__ = { "_edit_lock_":true }
 
@@ -82,7 +85,6 @@ trigger = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-editor/display_folded = true
 anchor_mode = 1
 rotating = false
 current = true
@@ -126,5 +128,22 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Entity" parent="." instance=ExtResource( 21 )]
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -24.0
+margin/top = -41.0
+margin/right = 16.0
+margin/bottom = -27.0
+custom_fonts/font = ExtResource( 22 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
