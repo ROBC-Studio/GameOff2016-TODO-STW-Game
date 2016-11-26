@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Store.gd" type="Script" id=1]
 [ext_resource path="res://Container.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Glitch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/SmartNPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=4]
 
 [node name="Node" type="Node"]
@@ -15,41 +15,9 @@ script/script = ExtResource( 1 )
 
 script/script = ExtResource( 2 )
 
-[node name="RigidBody" parent="Enemies" instance=ExtResource( 3 )]
+[node name="SmartNPC" parent="Enemies" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 322.572, -27.1325 )
-
-[node name="RigidBody3" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 320.906, 117.422 )
-
-[node name="RigidBody4" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 322.134, 269.662 )
-
-[node name="RigidBody1" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 323.034, -76.8041 )
-
-[node name="RigidBody3 2" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 321.369, 67.75 )
-
-[node name="RigidBody33" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 322.596, 219.99 )
-
-[node name="RigidBody2" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 322.126, -126.346 )
-
-[node name="RigidBody3 3" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 320.46, 18.2079 )
-
-[node name="RigidBody34" parent="Enemies" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 321.688, 170.448 )
+transform/pos = Vector2( -211.172, 66.2983 )
 
 [node name="Players" type="Node" parent="."]
 
@@ -57,6 +25,6 @@ script/script = ExtResource( 2 )
 
 [node name="Player" parent="Players" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 449.188, 299.961 )
+transform/pos = Vector2( 13.3382, 70.3725 )
 
 

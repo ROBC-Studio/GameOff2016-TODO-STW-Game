@@ -22,14 +22,15 @@ func _input_event(event):
 		set_error("test error");
 	if (event.type == InputEvent.KEY and event.pressed and event.scancode == KEY_RETURN):
 		response_node.add_color_override("font_color", originalColor);
-		var command = get_text();
+		var commands = get_text().split('|');
 		
-		if (command.begins_with("ls")):
-			Store.dispatch(EnemyActions.list_enemies());
-			return;
-		if (command.begins_with("affect_me")):
-			Store.dispatch(PlayersActions.affect_player(0));
-			return;
+		for command in commands:
+			if (command.begins_with("ls")):
+				Store.dispatch(EnemyActions.list_enemies());
+			if (command.begins_with("wander")):
+				Store.dispatch(EnemyActions.wander());
+			if (command.begins_with("affect_me")):
+				Store.dispatch(PlayersActions.affect_player(0));
 		# Send the action to the event
 
 func initialize(): 

@@ -20,15 +20,18 @@
 
 animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"default", "speed":5.0 }, { "frames":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ], "loop":true, "name":"attack", "speed":5.0 } ]
 
-[node name="Glitch" type="Node2D"]
+[node name="Glitch" type="KinematicBody2D"]
 
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.001
 script/script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 4
 playing = true
 __meta__ = { "_edit_lock_":true }
 

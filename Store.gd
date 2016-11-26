@@ -5,6 +5,7 @@ extends Node
 
 # Enemy actions:
 const LIST_ENEMIES = "LIST_ENEMIES";
+const WANDER = "WANDER";
 
 # Player actions:
 const AFFECT_PLAYER = "AFFECT_PLAYER";
@@ -20,6 +21,9 @@ func handleEnemies(state, action):
 	if (action.type == LIST_ENEMIES):
 		for entity in state:
 			get_node(entity.path).show_type();
+	if (action.type == WANDER):
+		for entity in state:
+			get_node(entity.path).wander();
 		
 	return;
 	
@@ -32,7 +36,7 @@ func handlePlayer(state, action):
 	return;
 
 func handleActions(state, action):
-	if (action.type == LIST_ENEMIES):
+	if (action.type == LIST_ENEMIES or action.type == WANDER):
 		handleEnemies(state.Enemies, action);
 		return;
 	if (action.type == AFFECT_PLAYER):
