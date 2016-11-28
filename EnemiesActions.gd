@@ -4,7 +4,23 @@ static func list_enemies():
 	};
 
 static func wander():
+	return wander_1(-1);
+	
+static func wander_1(timeInSeconds):
 	return {
-		type = "WANDER"
+		type = "WANDER",
+		timeInSeconds = timeInSeconds
 	};
 
+static func toggleDebug():
+	return {
+		type = "TOGGLE_DEBUG"
+	};
+
+static func toggleWatching():
+	return {
+		type = "TOGGLE_WATCHING"
+	};
+
+static func findPlayer():
+	
