@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Assets/610.fnt" type="BitmapFont" id=1]
-[ext_resource path="res://Scenes/dashboard.gd" type="Script" id=2]
+[ext_resource path="res://Assets/fonts/610.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Scripts/Dashboard.gd" type="Script" id=2]
 
 [node name="Terminal" type="LineEdit"]
 

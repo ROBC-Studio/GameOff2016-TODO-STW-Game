@@ -1,27 +1,27 @@
 [gd_scene load_steps=27 format=1]
 
-[ext_resource path="res://Scenes/player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_0.png" type="Texture" id=2]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_2.png" type="Texture" id=4]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_3.png" type="Texture" id=5]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_4.png" type="Texture" id=6]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_5.png" type="Texture" id=7]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_0.png" type="Texture" id=8]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_1.png" type="Texture" id=9]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_2.png" type="Texture" id=10]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_3.png" type="Texture" id=11]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_4.png" type="Texture" id=12]
-[ext_resource path="res://Assets/ode_player/ode_player_hacking_5.png" type="Texture" id=13]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_0.png" type="Texture" id=14]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_1.png" type="Texture" id=15]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_2.png" type="Texture" id=16]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_3.png" type="Texture" id=17]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_4.png" type="Texture" id=18]
-[ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=19]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_0.png" type="Texture" id=8]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_3.png" type="Texture" id=11]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_4.png" type="Texture" id=12]
+[ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=13]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_0.png" type="Texture" id=14]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_4.png" type="Texture" id=18]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_5.png" type="Texture" id=19]
 [ext_resource path="res://Scenes/Terminal.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Assets/610.fnt" type="BitmapFont" id=22]
+[ext_resource path="res://Assets/fonts/610.fnt" type="BitmapFont" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -30,7 +30,7 @@ points = Vector2Array( -14, 16, -4, 6, 6, 16, -4, 26, -14, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 
-animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"idle", "speed":5.0 }, { "frames":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ], "loop":true, "name":"hack", "speed":5.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ], "loop":true, "name":"run", "speed":5.0 } ]
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"idle", "speed":5.0 }, { "frames":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ], "loop":true, "name":"run", "speed":5.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ], "loop":true, "name":"hack", "speed":5.0 } ]
 
 [sub_resource type="Animation" id=3]
 
@@ -72,7 +72,6 @@ __meta__ = { "_edit_lock_":true }
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 2
 playing = true
 __meta__ = { "_edit_lock_":true }
 

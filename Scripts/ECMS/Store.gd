@@ -14,7 +14,7 @@ const FIND_PLAYER = "FIND_PLAYER";
 const AFFECT_PLAYER = "AFFECT_PLAYER";
 
 var _state = {
-	Enemies = [],
+	NPCs = [],
 	Players = []
 };
 
@@ -48,7 +48,7 @@ func handlePlayer(state, action):
 
 func handleActions(state, action):
 	if (action.type == LIST_ENEMIES or action.type == WANDER or action.type == TOGGLE_DEBUG or action.type == TOGGLE_WATCHING):
-		handleEnemies(state.Enemies, action);
+		handleEnemies(state.NPCs, action);
 		return;
 	if (action.type == AFFECT_PLAYER):
 		handlePlayer(state.Players, action);

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=1]
 
-[ext_resource path="res://SmartNPC.gd" type="Script" id=1]
-[ext_resource path="res://Assets/610.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Scripts/SmartNPC.gd" type="Script" id=1]
+[ext_resource path="res://Assets/fonts/610.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Assets/glitch_enemy/glitch_enemy_normal_0.png" type="Texture" id=3]
 [ext_resource path="res://Assets/glitch_enemy/glitch_enemy_normal_1.png" type="Texture" id=4]
 [ext_resource path="res://Assets/glitch_enemy/glitch_enemy_normal_2.png" type="Texture" id=5]
@@ -53,7 +53,7 @@ type_mask = 15
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 5
 playing = true
 
 [node name="Entity" parent="." instance=ExtResource( 9 )]
