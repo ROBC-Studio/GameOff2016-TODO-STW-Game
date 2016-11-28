@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://Assets/basic_tile.png" type="Texture" id=1]
-[ext_resource path="res://GlowyTile.gd" type="Script" id=2]
-[ext_resource path="res://Assets/tile_light_mask.png" type="Texture" id=3]
+[ext_resource path="res://Assets/tiles/basic_tile.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/GlowyTile.gd" type="Script" id=2]
+[ext_resource path="res://Assets/light_masks/tile_light_mask.png" type="Texture" id=3]
+
 
 [sub_resource type="Animation" id=1]
 

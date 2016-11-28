@@ -21,7 +21,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-speed = 40
+speed = 100
 visionDistance = 200
 isWatching = false
 debug = false
@@ -53,7 +53,7 @@ type_mask = 15
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 5
+frame = 1
 playing = true
 
 [node name="Entity" parent="." instance=ExtResource( 9 )]

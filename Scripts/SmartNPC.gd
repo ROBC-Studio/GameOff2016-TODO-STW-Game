@@ -37,16 +37,26 @@ func wander(forTimeInSeconds):
 		randomize();
 		forTimeInSeconds = randi() % 5;
 	if (coin == 0):
-		_wanderInAsync(VECTOR_RIGHT, forTimeInSeconds);
+		_moveInAsyncWithTimeout(VECTOR_RIGHT, forTimeInSeconds);
 	elif (coin == 1):
-		_wanderInAsync(VECTOR_LEFT, forTimeInSeconds);
+		_moveInAsyncWithTimeout(VECTOR_LEFT, forTimeInSeconds);
 	elif (coin == 2):
-		_wanderInAsync(VECTOR_UP, forTimeInSeconds);
+		_moveInAsyncWithTimeout(VECTOR_UP, forTimeInSeconds);
 	elif (coin == 3): 
-		_wanderInAsync(VECTOR_DOWN, forTimeInSeconds);
+		_moveInAsyncWithTimeout(VECTOR_DOWN, forTimeInSeconds);
 	# Note: if the method you call has yield it will return immediately do not expect it to block here
 	update();
 	return;
+
+func follow(position):
+	var distance = position - get_global_pos();
+	if (abs(distance.x) > abs(distance.y)):
+		distance = distance * Vector2(1.0, 0.0);
+	elif (abs(distance.x) < abs(distance.y)):
+		distance = distance * Vector2(0.0, 1.0);
+	var direction = distance.normalized();
+	if (distance.length() > 1.5):
+		_moveInAsync(direction);
 
 func can_see_player():
 	if (_vision.is_colliding()):
@@ -62,8 +72,9 @@ func can_see_player():
 	return;
 
 func find_player(playerPos):
-	_navigationPoints = get_node("../../Navigation2D").get_simple_path(get_global_pos(), playerPos, false);
-	update();
+	_navigationPoints = get_node("../../Navigation2D").get_simple_path(get_global_pos(), playerPos, true);
+	if (_navigationPoints.size() > 1):
+		follow(_navigationPoints[1]);
 
 func toggleDebug():
 	debug = !debug;
@@ -72,6 +83,7 @@ func toggleDebug():
 
 func toggleWatching():
 	isWatching = !isWatching;
+	_motion = VECTOR_STOP;
 	return;
 # "Private" Methods
 
@@ -83,7 +95,7 @@ func _ready():
 func _process(delta):
 	if (isWatching):
 		can_see_player();
-	if (_player != null):
+	if (isWatching and _player != null):
 		find_player(get_node(_player).get_global_pos());
 	pass
 
@@ -103,9 +115,13 @@ func _debugPrint(message):
 	if (debug):
 		print("%s@%s - %s" % [self.get_name(), self.get_pos(), message]);
 
-func _wanderInAsync(direction, timeInSeconds):
+func _moveInAsync(direction):
 	_vision.set_cast_to(direction*visionDistance);
 	_motion = direction;
+	return;
+	
+func _moveInAsyncWithTimeout(direction, timeInSeconds):
+	_moveInAsync(direction);
 	_timer._create_timer(self, timeInSeconds, true, "_wander_stop");
 	return;
 	
