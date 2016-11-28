@@ -3,8 +3,8 @@ extends LineEdit
 onready var response_node = get_node("Response");
 onready var Store = get_node("/root/Store");
 
-const EnemyActions = preload("res://EnemiesActions.gd");
-const PlayersActions = preload("res://PlayersActions.gd");
+const EnemyActions = preload("res://Scripts/ECMS/EnemiesActions.gd");
+const PlayersActions = preload("res://Scripts/ECMS/PlayersActions.gd");
 
 const terminal_prefix = ">> ";
 const terminal_format = ">> %s";
