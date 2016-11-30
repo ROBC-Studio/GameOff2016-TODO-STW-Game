@@ -110,8 +110,7 @@ editor/display_folded = true
 
 [node name="NPCs" type="Node2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 416, 368 )
+transform/pos = Vector2( 416, 128 )
 script/script = ExtResource( 3 )
 
 [node name="KinematicBody2D" parent="NPCs" instance=ExtResource( 4 )]
@@ -145,6 +144,102 @@ transform/pos = Vector2( 145.902, -87.695 )
 [node name="KinematicBody2D7" parent="NPCs" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 153.815, 64.7524 )
+
+[node name="KinematicBody2D 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -220.676, 528.815 )
+
+[node name="KinematicBody2D1 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 101.734, 527.454 )
+
+[node name="KinematicBody2D2 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -54.7095, 429.507 )
+
+[node name="KinematicBody2D3 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -50.6284, 643.086 )
+
+[node name="KinematicBody2D4 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -170.342, 602.275 )
+
+[node name="KinematicBody2D5 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -168.981, 453.994 )
+
+[node name="KinematicBody2D6 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 97.902, 440.305 )
+
+[node name="KinematicBody2D7 2" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 105.815, 592.752 )
+
+[node name="KinematicBody2D 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 259.324, 240.814 )
+
+[node name="KinematicBody2D1 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 581.734, 239.454 )
+
+[node name="KinematicBody2D2 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 425.29, 141.507 )
+
+[node name="KinematicBody2D3 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 429.372, 355.086 )
+
+[node name="KinematicBody2D4 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 309.658, 314.275 )
+
+[node name="KinematicBody2D5 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 311.019, 165.994 )
+
+[node name="KinematicBody2D6 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 577.902, 152.305 )
+
+[node name="KinematicBody2D7 3" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 585.815, 304.752 )
+
+[node name="KinematicBody2D 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -652.676, 240.814 )
+
+[node name="KinematicBody2D1 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -330.266, 239.454 )
+
+[node name="KinematicBody2D2 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -486.71, 141.507 )
+
+[node name="KinematicBody2D3 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -482.628, 355.086 )
+
+[node name="KinematicBody2D4 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -602.342, 314.275 )
+
+[node name="KinematicBody2D5 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -600.981, 165.994 )
+
+[node name="KinematicBody2D6 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -334.098, 152.305 )
+
+[node name="KinematicBody2D7 4" parent="NPCs" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -326.185, 304.752 )
 
 [node name="Players" type="Node2D" parent="."]
 

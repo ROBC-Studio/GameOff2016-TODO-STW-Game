@@ -25,6 +25,7 @@ script/script = ExtResource( 1 )
 speed = 100
 visionDistance = 200
 isWatching = false
+isChasing = false
 debug = false
 debugVerbose = false
 
@@ -55,7 +56,7 @@ type_mask = 15
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Entity" parent="." instance=ExtResource( 9 )]

@@ -20,6 +20,7 @@ const DEFAULT_ABILITY = "Abilities/Default";
 export var speed = 40;
 export var visionDistance = 200;
 export var isWatching = false;
+export var isChasing = false;
 export var debug = false;
 export var debugVerbose = false;
 
@@ -50,7 +51,7 @@ func wander(forTimeInSeconds):
 	update();
 	return;
 
-func canSeePlayer():
+func canSeePlayer(notused):
 	if (_vision.is_colliding()):
 		var getObj = _vision.get_collider();
 		_debugVerbosePrint("Found %s at %s" % [getObj.get_name(), getObj.get_pos()]);
@@ -58,9 +59,12 @@ func canSeePlayer():
 			_player = getObj.get_path();
 		_canSeePlayer = true;
 		_motion = Vector2(0, 0);
-	elif (_canSeePlayer):
-		_debugPrint("Lost object");
-		_canSeePlayer = false;
+	return _canSeePlayer;
+	
+func notHasPlayer(notused):
+	return !_canSeePlayer;
+
+func hasPlayer(notused):
 	return _canSeePlayer;
 
 func findPlayer(playerPos):
@@ -102,33 +106,51 @@ func toggleWatching():
 	isWatching = !isWatching;
 	_motion = VECTOR_STOP;
 	return;
+	
+func chase():
+	findPlayer(get_node(_player).get_global_pos());
+	if (_canSeePlayer):
+		useAbility(_player);
 
 # "Private" Methods
-var tr;
 func _ready():
 	set_process(true);
 	set_fixed_process(true);
 	
 	var kit = load("res://Scripts/BehaiviorKit.gd").new();
-	var wander = kit.build().randomSelect();
-	wander.action(self, "_moveInAsyncWithTimeout", [VECTOR_LEFT, 3]);
-	wander.action(self, "_moveInAsyncWithTimeout", [VECTOR_RIGHT, 3]);
-	wander.action(self, "_moveInAsyncWithTimeout", [VECTOR_DOWN, 3]);
-	wander.action(self, "_moveInAsyncWithTimeout", [VECTOR_UP, 3]);
-	wander.action(self, "_moveInAsyncWithTimeout", [VECTOR_STOP, 3]);
+	var root = kit.build().activeSelector();
+	
+	var attackPlayer = root.sequence();
+	attackPlayer.condition(self, "hasPlayer", []);
+	attackPlayer.action(self, "toggleChasing", _player);
+	attackPlayer.finish();
+	
+	var wander = root.sequence();
+	wander.condition(self, "notHasPlayer", []);
+	var wander_moveRandomDirection = wander.randomSelect();
+	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_LEFT, 3]);
+	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_RIGHT, 3]);
+	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_DOWN, 3]);
+	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_UP, 3]);
+	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_STOP, 3]);
+	wander_moveRandomDirection.finish();
+	
 	wander.finish();
-	var btree = kit.makeTree(wander);
+	
+	root.finish();
+	var btree = kit.makeTree(root);
 	add_child(btree);
 	return;
 
+func toggleChasing(notused): 
+	isChasing = !isChasing;
+	return isChasing;
+	
 func _process(delta):
 	#TODO - Move this logic somewhere else
-	if (isWatching):
-		canSeePlayer();
-	if (isWatching and _player != null):
-		findPlayer(get_node(_player).get_global_pos());
-		if (_canSeePlayer):
-			useAbility(_player);
+	canSeePlayer(null);
+	if (isChasing): 
+		chase();
 	update();
 
 func _fixed_process(delta):

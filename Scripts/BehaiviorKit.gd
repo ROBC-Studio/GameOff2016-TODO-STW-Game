@@ -35,15 +35,18 @@ class BTree extends Node:
 	func tick():
 		_builder.tick();
 		
-		get_node("/root/MyTimer")._create_timer(self, 4, true, "tick");
+		get_node("/root/MyTimer")._create_timer(self, 0.15, true, "tick");
 		return;
 
+# Builds the btree and also the execution engine
 class BTBuilder:
 	var _nodes = [];
 	var _currentIndex = 1;
 	var finalized = false;
 
 	# Builder API
+	
+	# Composite nodes
 	func activeSelector():
 		if finalized: return;
 		var selector = get_script().new();
@@ -68,7 +71,8 @@ class BTBuilder:
 		
 		_nodes.push_back(sequence);
 		return sequence;
- 
+		
+ 	# Leaf nodes
 	func condition(target, toTest, state):
 		if _nodes.size() <= 0 or finalized: return;
 		_nodes.push_back({
@@ -92,6 +96,8 @@ class BTBuilder:
 		return self;
 	
 	# Behavior API
+	
+	# tick function which is essentially the main loop
 	func tick():
 		if !finalized: return;
 		if _currentIndex >= _nodes.size():
@@ -108,6 +114,8 @@ class BTBuilder:
 			if (result == BH_FAILURE):
 				_currentIndex += 1;
 				return BH_RUNNING;
+			elif (result == BH_RUNNING):
+				return BH_RUNNING
 			else:
 				return BH_SUCCESS;
 		if _nodes[0] == CM_SEQUENCE:
@@ -115,11 +123,16 @@ class BTBuilder:
 			var result = execute(choice);
 			if (result == BH_FAILURE):
 				return BH_FAILURE;
-			elif (result == BH_SUCCESS):
+			elif (result == BH_SUCCESS or result == BH_RUNNING):
+				_currentIndex += 1;
+			if _currentIndex >= _nodes.size():
 				return BH_SUCCESS;
 			else:
-				_currentIndex += 1;
 				return BH_RUNNING;
+	
+	# this is ghetto as hell, but because Dictionary isn't of type Object I can't reflect the type
+	# in the grand scheme of things not really that big of an issue because I will either have a 
+	# dictionary which is all the other nodes or a builder object
 	func has(ignored):
 		return false;
 

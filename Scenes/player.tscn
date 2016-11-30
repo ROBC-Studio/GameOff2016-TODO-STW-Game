@@ -72,7 +72,7 @@ __meta__ = { "_edit_lock_":true }
 
 frames = SubResource( 2 )
 animation = "idle"
-frame = 5
+frame = 4
 playing = true
 __meta__ = { "_edit_lock_":true }
 
