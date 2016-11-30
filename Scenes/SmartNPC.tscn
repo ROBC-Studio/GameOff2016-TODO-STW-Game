@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/SmartNPC.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fonts/610.fnt" type="BitmapFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/glitch_enemy/glitch_enemy_normal_4.png" type="Texture" id=7]
 [ext_resource path="res://Assets/glitch_enemy/glitch_enemy_normal_5.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/NPCAbilities/Default.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -21,10 +22,12 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-speed = 40
+speed = 100
 visionDistance = 200
 isWatching = false
+isChasing = false
 debug = false
+debugVerbose = false
 
 [node name="Label" type="Label" parent="."]
 
@@ -57,5 +60,11 @@ frame = 5
 playing = true
 
 [node name="Entity" parent="." instance=ExtResource( 9 )]
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Default" type="Node" parent="Abilities"]
+
+script/script = ExtResource( 10 )
 
 
