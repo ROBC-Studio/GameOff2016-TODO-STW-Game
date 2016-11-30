@@ -18,8 +18,6 @@ func _ready():
 	originalColor = get_node("Response").get_color("font_color");
 
 func _input_event(event):
-	if (event.type == InputEvent.MOUSE_BUTTON and event.pressed):
-		set_error("test error");
 	if (event.type == InputEvent.KEY and event.pressed and event.scancode == KEY_RETURN):
 		response_node.add_color_override("font_color", originalColor);
 		var commands = get_text().split('|');
