@@ -59,13 +59,15 @@ func canSeePlayer(notused):
 			_player = getObj.get_path();
 		_canSeePlayer = true;
 		_motion = Vector2(0, 0);
+	else:
+		_canSeePlayer = false;
 	return _canSeePlayer;
 	
 func notHasPlayer(notused):
-	return !_canSeePlayer;
+	return _player==null;
 
 func hasPlayer(notused):
-	return _canSeePlayer;
+	return _player!=null;
 
 func findPlayer(playerPos):
 	_navigationPoints = get_node("../../Navigation2D").get_simple_path(get_global_pos(), playerPos, true);
@@ -107,7 +109,7 @@ func toggleWatching():
 	_motion = VECTOR_STOP;
 	return;
 	
-func chase():
+func chase(notused):
 	findPlayer(get_node(_player).get_global_pos());
 	if (_canSeePlayer):
 		useAbility(_player);
@@ -121,12 +123,12 @@ func _ready():
 	var root = kit.build().activeSelector();
 	
 	var attackPlayer = root.sequence();
-	attackPlayer.condition(self, "hasPlayer", []);
-	attackPlayer.action(self, "toggleChasing", _player);
+	attackPlayer.condition(self, "hasPlayer", null);
+	attackPlayer.action(self, "chase", null);
 	attackPlayer.finish();
 	
 	var wander = root.sequence();
-	wander.condition(self, "notHasPlayer", []);
+	wander.condition(self, "notHasPlayer", null);
 	var wander_moveRandomDirection = wander.randomSelect();
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_LEFT, 3]);
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_RIGHT, 3]);
@@ -149,8 +151,6 @@ func toggleChasing(notused):
 func _process(delta):
 	#TODO - Move this logic somewhere else
 	canSeePlayer(null);
-	if (isChasing): 
-		chase();
 	update();
 
 func _fixed_process(delta):

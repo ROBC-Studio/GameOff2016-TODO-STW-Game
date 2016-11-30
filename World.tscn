@@ -110,6 +110,7 @@ editor/display_folded = true
 
 [node name="NPCs" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 416, 128 )
 script/script = ExtResource( 3 )
 
