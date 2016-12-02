@@ -64,7 +64,7 @@ func canSeePlayer(notused):
 	return _canSeePlayer;
 	
 func notHasPlayer(notused):
-	return _player==null;
+	return !hasPlayer(notused);
 
 func hasPlayer(notused):
 	return _player!=null;
@@ -127,16 +127,14 @@ func _ready():
 	attackPlayer.action(self, "chase", null);
 	attackPlayer.finish();
 	
-	var wander = root.sequence();
-	wander.condition(self, "notHasPlayer", null);
+	var wander = root.sequence().condition(self, "notHasPlayer", null);
 	var wander_moveRandomDirection = wander.randomSelect();
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_LEFT, 3]);
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_RIGHT, 3]);
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_DOWN, 3]);
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_UP, 3]);
 	wander_moveRandomDirection.action(self, "_moveInAsyncWithTimeout", [VECTOR_STOP, 3]);
-	wander_moveRandomDirection.finish();
-	
+	wander_moveRandomDirection.finish();	
 	wander.finish();
 	
 	root.finish();

@@ -71,7 +71,12 @@ class BTBuilder:
 		
 		_nodes.push_back(sequence);
 		return sequence;
+	
+	# Decorators
+	func negate():
 		
+		pass
+	
  	# Leaf nodes
 	func condition(target, toTest, state):
 		if _nodes.size() <= 0 or finalized: return;
@@ -80,6 +85,8 @@ class BTBuilder:
 			execute = funcref(target, toTest),
 			withState = state
 		});
+		
+		print(_nodes);
 		return self;
 
 	func action(target, toRun, state):
@@ -93,6 +100,7 @@ class BTBuilder:
 
 	func finish():
 		finalized = true;
+		print(_nodes);
 		return self;
 	
 	# Behavior API
@@ -122,6 +130,7 @@ class BTBuilder:
 			var choice = _nodes[_currentIndex];
 			var result = execute(choice);
 			if (result == BH_FAILURE):
+				_currentIndex = 1;
 				return BH_FAILURE;
 			elif (result == BH_SUCCESS or result == BH_RUNNING):
 				_currentIndex += 1;
