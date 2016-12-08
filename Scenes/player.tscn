@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=27 format=1]
 
-[ext_resource path="res://Scenes/player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_0.png" type="Texture" id=2]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/ode_player/ode_player_Idle_2.png" type="Texture" id=4]
@@ -13,47 +13,82 @@
 [ext_resource path="res://Assets/ode_player/ode_player_Run_3.png" type="Texture" id=11]
 [ext_resource path="res://Assets/ode_player/ode_player_Run_4.png" type="Texture" id=12]
 [ext_resource path="res://Assets/ode_player/ode_player_Run_5.png" type="Texture" id=13]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_0.png" type="Texture" id=14]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_4.png" type="Texture" id=18]
+[ext_resource path="res://Assets/ode_player/ode_player_hacking_5.png" type="Texture" id=19]
+[ext_resource path="res://Scenes/Terminal.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/fonts/610.fnt" type="BitmapFont" id=22]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
-height = 20.0
+points = Vector2Array( -14, 16, -4, 6, 6, 16, -4, 26, -14, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 
-animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"idle", "speed":5.0 }, { "frames":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ], "loop":true, "name":"run", "speed":5.0 } ]
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"idle", "speed":5.0 }, { "frames":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ], "loop":true, "name":"run", "speed":5.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ], "loop":true, "name":"hack", "speed":5.0 } ]
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "Dash_Zoom_In"
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 10 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ] }
+
+[sub_resource type="Animation" id=4]
+
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ] }
 
 [node name="Player" type="KinematicBody2D"]
 
+transform/pos = Vector2( 510.098, 263.695 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.21952, 0, 0, 1.19268, -4.92982, 2.0366 )
-shapes/0/trigger = true
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "idle"
+frame = 4
+playing = true
+__meta__ = { "_edit_lock_":true }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="MoveCollision" type="CollisionPolygon2D" parent="."]
 
-transform/pos = Vector2( -4.92982, 2.0366 )
-transform/scale = Vector2( 1.21952, 1.19268 )
-shape = SubResource( 1 )
-trigger = true
-_update_shape_index = 0
+build_mode = 0
+polygon = Vector2Array( -14, 16, -4, 6, 6, 16, -4, 26, -14, 16 )
+shape_range = Vector2( 0, 0 )
+trigger = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 1, 1 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -66,5 +101,50 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+__meta__ = { "_edit_lock_":true }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Terminal" parent="Camera2D/CanvasLayer" instance=ExtResource( 20 )]
+
+visibility/light_mask = 0
+margin/left = 258.0
+margin/top = 385.0
+margin/right = 767.0
+margin/bottom = 413.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Dash_Zoom_In = SubResource( 3 )
+anims/Dash_Zoom_Out = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Entity" parent="." instance=ExtResource( 21 )]
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -24.0
+margin/top = -41.0
+margin/right = 16.0
+margin/bottom = -27.0
+custom_fonts/font = ExtResource( 22 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
